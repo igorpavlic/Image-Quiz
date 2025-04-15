@@ -30,39 +30,33 @@ const loadWords = async () => {
 // Funkcija za dohvat slike Google Custom Search API
 /*
 const fetchImage = async (query) => {
-  try {
-    const res = await axios.get('https://www.googleapis.com/customsearch/v1', {
-      params: {
-        key: GOOGLE_API_KEY,
-        cx: GOOGLE_CX_ID,
-        q: query,
-        searchType: 'image',
-        num: 1
-      }
+    const params = new URLSearchParams({
+      key: GOOGLE_API_KEY,
+      cx: GOOGLE_CX_ID,
+      q: query,
+      searchType: 'image',
+      num: '1'
     })
-    return res.data.items[0]?.link || ''
-  } catch (e) {
-    console.error('Greška kod API-ja:', e)
-    return ''
-  }
+
+    const response = await fetch(`https://www.googleapis.com/customsearch/v1?${params}`)
+    const data = await response.json()
+    return data.items?.[0]?.link || ''
 }
   */
 
 // Funkcija za generiranje slike pomoću DeepAI API-ja
 const fetchImage = async (prompt) => {
-    const response = await axios.post(
-      'https://api.deepai.org/api/text2img',
-      { text: prompt },
-      {
-        headers: {
-          'Api-Key': DEEPAI_API_KEY,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }
-    )
+    const response = await fetch('https://api.deepai.org/api/text2img', {
+      method: 'POST',
+      headers: {
+        'Api-Key': DEEPAI_API_KEY,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({ text: prompt })
+    })
 
-    return response.data.output_url || ''
-
+    const data = await response.json()
+    return data.output_url || ''
 }
 
 // Pozovi kod mountanja
