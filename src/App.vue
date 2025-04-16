@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <Header />
-
     <div v-if="!authChecked">
       <p>Loading...</p>
     </div>
@@ -19,9 +18,6 @@
     />
 
     <div v-else>
-      <p>Player: {{ user.email }}</p>
-      <button @click="logout">Log Out</button>
-
       <DataProvider 
         @wordsLoaded="handleWordsLoaded" 
         @imageFetcherReady="setImageFetcher"
@@ -32,11 +28,10 @@
         :wordList="wordList" 
         :fetchImage="fetchImage" 
       />
+      <p>Player: {{ user.email }}</p>
+      <button @click="logout">Log Out</button>
 
-      <AdminPanel
-        v-if="user.email === ownerEmail"
-
-      />
+      <AdminPanel v-if="user.email === ownerEmail" />
     </div>
     <Footer />
   </div>
@@ -90,41 +85,5 @@ const setImageFetcher = (fetcher) => {
 </script>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #7fcafc;
-  color: #333;
-  margin: 0;
-}
-.container {
-  width: 75%;
-  margin: 40px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-img {
-  max-width: 300px;
-  margin: 20px auto;
-  display: block;
-}
-input, textarea {
-  padding: 8px;
-  margin: 10px;
-  width: 80%;
-  max-width: 500px;
-}
-button {
-  padding: 8px 12px;
-  margin: 5px;
-  cursor: pointer;
-}
-.admin-panel {
-  margin-top: 30px;
-  padding: 20px;
-  background: #f0f0f0;
-  border-radius: 8px;
-}
+  @import './assets/main.css'
 </style>
