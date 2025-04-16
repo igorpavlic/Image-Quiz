@@ -1,13 +1,10 @@
 <template>
-    <div>
-        <p>
+    <div class="admin-panel">
         <a href="#" @click.prevent="showForm = !showForm">
-            {{ showForm ? '✖️ Hide Add Words' : '➕ Show Add Words' }}
+            {{ showForm ? '❌ Close' : '➕ Add Words' }}
         </a>
-        </p>
   
-      <div v-if="showForm" style="margin-top: 20px">
-        <h3>Add words</h3>
+      <div v-if="showForm" class="form-popup">
         <textarea
           v-model="bulkWords"
           rows="6"
@@ -30,7 +27,7 @@
   
   const bulkWords = ref('')
   const bulkAddSuccess = ref(false)
-  const showForm = ref(false) // kontrola prikaza forme
+  const showForm = ref(false)
   
   const addMultiple = async () => {
     let words = bulkWords.value

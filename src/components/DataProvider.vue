@@ -6,7 +6,6 @@
 import { onMounted } from 'vue'
 import { db } from '../firebase'
 import { collection, getDocs } from 'firebase/firestore'
-import axios from 'axios'
 
 // const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 // const GOOGLE_CX_ID = import.meta.env.VITE_GOOGLE_CX_ID
