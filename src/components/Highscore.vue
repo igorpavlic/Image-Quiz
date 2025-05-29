@@ -1,7 +1,7 @@
 <template>
   <div class="highscore-panel">
-    <a href="#" @click.prevent="showHighscore = !showHighscore">
-      {{ showHighscore ? '❌ Close Highscore' : '🏆 View Highscore' }}
+    <a href="#" @click.prevent="toggleHighscore">
+      {{ showHighscore ? '❌ Close Highscore' : '🏆 View Highscores' }}
     </a>
 
     <div v-if="showHighscore" class="highscore-popup">
@@ -39,9 +39,6 @@
         </div>
       </div>
 
-      <button @click="refreshScores" class="refresh-btn">
-        🔄 Refresh
-      </button>
     </div>
   </div>
 </template>
@@ -119,4 +116,11 @@ const getRankSuffix = (rank) => {
 onMounted(() => {
   loadHighscores()
 })
+
+const toggleHighscore = () => {
+  showHighscore.value = !showHighscore.value
+  if (showHighscore.value) {
+    loadHighscores()
+  }
+}
 </script>
