@@ -32,6 +32,7 @@
       <button @click="logout">Log Out</button>
 
       <AdminPanel v-if="user.email === ownerEmail" />
+      <Highscore />
     </div>
     <Footer />
   </div>
@@ -47,6 +48,7 @@ import QuizView from './components/QuizView.vue'
 import AdminPanel from './components/AdminPanel.vue'
 import DataProvider from './components/DataProvider.vue'
 import Header from './components/Header.vue'
+import Highscore from './components/Highscore.vue'
 import Footer from './components/Footer.vue'
 
 const ownerEmail = 'pi.eko013@gmail.com'
