@@ -7,8 +7,8 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDN4aXIfytGdLj9YAjbckeUVCZaj34b5F0",
-  authDomain: "image-quiz-2161f.firebaseapp.com",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: "image-quiz-2161f",
   storageBucket: "image-quiz-2161f.firebasestorage.app",
   messagingSenderId: "695204418836",
