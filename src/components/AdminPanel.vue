@@ -12,7 +12,7 @@
           placeholder="like: dog, car, ball, ..."
         ></textarea>
         <br />
-        <button @click="Words2Add">Add Words</button>
+        <button @click="addWords">Add Words</button>
         <p style="color: green" v-if="Words2AddSuccess">✅ Words Added!</p>
       </div>
     </div>
