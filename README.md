@@ -181,6 +181,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - GitHub: [@igorpavlic](https://github.com/igorpavlic)
 - Email: ipavlic@hotmail
 
+## 🎓 Academic Information
+
+This project was developed as part of coursework at:
+
+**[Faculty of Informatics in Pula](https://fipu.unipu.hr/)**
+- Course: **[Software Engineering](https://ntankovic.unipu.hr/pi)**
+- Mentor: **[doc. dr. sc. Nikola Tanković](https://ntankovic.unipu.hr)**
+
 ## 🙏 Acknowledgments
 
 - [DeepAI](https://deepai.org/) for the image generation API
