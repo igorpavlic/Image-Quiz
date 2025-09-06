@@ -126,7 +126,7 @@ src/
 ### Admin Access
 Set the owner email in `App.vue`:
 ```javascript
-const ownerEmail = 'your-admin-email@domain.com'
+const ownerEmail = 'admin@mail.com'
 ```
 
 ### Firestore Security Rules
