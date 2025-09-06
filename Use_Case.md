@@ -206,20 +206,3 @@ flowchart TD
     class Logout,LoginError,RegisterError red
     class AdminPanel,HighscoreComponent purple
 ```
-
-## 6. Sigurnosne napomene
-
-1. Aplikacija koristi Firebase Authentication za sigurnu autentikaciju korisnika
-2. Administratorske funkcije dostupne su samo korisniku s određenim email-om
-3. DeepAI API ključ treba čuvati kao environment varijablu (VITE_DEEPAI_API_KEY)
-4. Bodovi se ažuriraju samo za autenticirane korisnike
-
-## 7. Moguća unapređenja
-
-1. Implementacija više razina težine
-2. Dodavanje vremenskog ograničenja za odgovore
-3. Implementacija kategorija riječi
-4. Dodavanje mogućnosti za više jezika
-5. Implementacija sustava nagrada ili postignuća
-6. Dodavanje statistike za korisnike (postotak točnih odgovora, najbrži odgovori, itd.)
-7. Implementacija mogućnosti za izazivanje drugih korisnika
