@@ -149,27 +149,15 @@ service cloud.firestore {
 
 ## 🚀 Deployment
 
+### Build for development
+```bash
+npm run dev
+```
+
 ### Build for production
 ```bash
 npm run build
 ```
-
-### Deploy to Firebase Hosting
-```bash
-npm install -g firebase-tools
-firebase login
-firebase init hosting
-firebase deploy
-```
-
-## 🎨 Customization
-
-### Styling
-The app uses custom CSS with CSS custom properties. Key classes:
-- `.container` - Main app wrapper
-- `.wrapper` - Quiz content container  
-- `.spinner-circle` - Loading animation
-- `.score-item` - Leaderboard entries
 
 ## 📝 License
 
@@ -194,4 +182,5 @@ This project was developed as part of coursework at:
 - [DeepAI](https://deepai.org/) for the image generation API
 - [Firebase](https://firebase.google.com/) for backend services
 - [Vue.js](https://vuejs.org/) for the reactive framework
-- The open-source community for inspiration and resources
+- [VS Code](https://code.visualstudio.com/) for coding
+- [Claude AI](https://claude.ai/) for everything :)
