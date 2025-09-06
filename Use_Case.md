@@ -8,7 +8,7 @@ Image Quiz je web aplikacija koja testira sposobnost korisnika da prepoznaju sli
 
 - **Igrači** - korisnici koji rješavaju kviz
 - **Administrator** - korisnik s posebnim privilegijama za upravljanje riječima
-- **Vlasnik** - korisnik koji ima email "pi.eko013@gmail.com" i ima administratorske ovlasti
+- **Vlasnik** - korisnik koji ima email "admin@mail.com" i ima administratorske ovlasti
 
 ## 3. Glavni slučajevi korištenja
 
