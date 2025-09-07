@@ -411,7 +411,7 @@ Highscore lista dostupna je klikom na "🏆 View Highscores":
 
 ### 6.4 Administratorske funkcije
 
-Samo korisnik s email adresom pi.eko013@gmail.com ima pristup admin panelu:
+Samo korisnik s email adresom koju postavimo u aplikaciji ima pristup admin panelu:
 
 1. **Otvaranje panela** - klik na "➕ Add Words"
 2. **Unos riječi** - upisati riječi odvojene zarezom ili razmakom
@@ -443,3 +443,4 @@ Sustav automatski:
 ### 6.6 Odjava iz sustava
 
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
+
