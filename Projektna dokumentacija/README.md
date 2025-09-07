@@ -447,5 +447,3 @@ Sustav automatski:
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
 ![logout](./images/logout.png)
-
-
