@@ -2,6 +2,9 @@
 
 ### Prijediplomski sveučilišni studij Informatika
 
+- Kolegij: **[Programsko inženjerstvo](https://ntankovic.unipu.hr/pi)**
+- Mentor: **[doc. dr. sc. Nikola Tanković](https://ntankovic.unipu.hr)**
+
 # Projektna dokumentacija: Image Quiz
 
 **Ime i prezime studenta:** Igor Pavlić  
@@ -9,8 +12,6 @@
 
 
 **7. rujna 2025.**
-
-
 
 ## 1. Sažetak
 
@@ -491,6 +492,7 @@ Sustav automatski:
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
 ![logout](./images/logout.png)
+
 
 
 
