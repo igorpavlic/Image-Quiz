@@ -394,7 +394,7 @@ Nakon uspješne prijave, kviz se automatski učitava:
 1. **Pričekajte generiranje slike** - prikazuje se "Generating image..." poruka
 2. **Analizirajte sliku** - pokušajte prepoznati što slika predstavlja
 3. **Unesite odgovor** - upišite riječ u polje "Write here"
-4. **Potvrdite odgovor** - pritisnite Enter ili kliknite "Check"
+4. **Potvrdite odgovor** - kliknite "Check"
 5. **Provjerite rezultat**:
    - ✅ Correct! - dodaje se 1 bod
    - ❌ Wrong. Correct answer: [riječ] - nema bodova
@@ -423,24 +423,8 @@ Sustav automatski:
 - Uklanja duplikate
 - Ignorira riječi kraće od 2 slova
 
-### 6.5 Rješavanje problema
-
-**Problem: Slika se ne učitava**
-- Provjerite internetsku vezu
-- Osvježite stranicu (F5)
-- Pokušajte ponovno za nekoliko sekundi
-
-**Problem: Bodovi se ne ažuriraju**
-- Provjerite jeste li prijavljeni
-- Osvježite stranicu
-- Provjerite konzolu za greške
-
-**Problem: Ne mogu se registrirati**
-- Email mora biti valjan format
-- Lozinka mora imati minimalno 6 znakova
-- Email možda već postoji u sustavu
-
 ### 6.6 Odjava iz sustava
 
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
+
 
