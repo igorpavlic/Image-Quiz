@@ -1,4 +1,16 @@
+### Sveučilište Jurja Dobrile u Puli
+
+### Prijediplomski sveučilišni studij Informatika
+
 # Projektna dokumentacija: Image Quiz
+
+**Ime i prezime studenta:** Igor Pavlić  
+**JMBAG:** 0069012453  
+
+
+**7. rujna 2025.**
+
+
 
 ## 1. Sažetak
 
@@ -479,5 +491,6 @@ Sustav automatski:
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
 ![logout](./images/logout.png)
+
 
 
