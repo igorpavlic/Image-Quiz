@@ -381,11 +381,11 @@ class FirebaseService {
 
 Pri prvom pokretanju aplikacije prikazuje se ekran za prijavu. 
 
-![Login](/login.png)
+![Login](./images/login.png)
 
 Novi korisnici trebaju:
 
-![Registracija](/register.png)
+![Registracija](./images/register.png)
 
 1. Kliknuti na "No Account? Register!"
 2. Unijeti važeću email adresu
@@ -397,7 +397,7 @@ Novi korisnici trebaju:
 
 Nakon uspješne prijave, kviz se automatski učitava:
 
-![Glavna stranica](/main1.png)
+![Glavna stranica](./images/main1.png)
 
 1. **Pričekajte generiranje slike** - prikazuje se "Generating image..." poruka
 2. **Analizirajte sliku** - pokušajte prepoznati što slika predstavlja
@@ -407,7 +407,7 @@ Nakon uspješne prijave, kviz se automatski učitava:
    - ✅ Correct! - dodaje se 1 bod
    - ❌ Wrong. Correct answer: [riječ] - nema bodova
   
-![Bodovi](/main2.png)
+![Bodovi](./images/main2.png)
 
 6. **Nova runda** - automatski se učitava nakon 1 sekunde
 
@@ -415,27 +415,27 @@ Nakon uspješne prijave, kviz se automatski učitava:
 
 Highscore lista dostupna je klikom na "🏆 View Highscores":
 
-![High Score](/highscore1.png)
+![High Score](./images/highscore1.png)
 
 - Prikazuje top 10 igrača
 - Vaš rezultat označen je drugom bojom
 - Ako niste u top 10, vaš rang prikazuje se na dnu
 - Lista se automatski osvježava
 
-![High Score Lista](/highscore2.png)
+![High Score Lista](./images/highscore2.png)
 
 ### 6.4 Administratorske funkcije
 
 Samo korisnik s email adresom koju postavimo u aplikaciji ima pristup admin panelu:
 
-![Admin](/admin.png)
+![Admin](./images/admin.png)
 
 1. **Otvaranje panela** - klik na "➕ Add Words"
 2. **Unos riječi** - upisati riječi odvojene zarezom ili razmakom
 3. **Potvrda** - klik na "Add Words"
 4. **Provjera** - pojavljuje se ✅ Words Added!
 
-![Add Words](/addwords.png)
+![Add Words](./images/addwords.png)
 
 Sustav automatski:
 - Pretvara sve riječi u mala slova
@@ -446,5 +446,6 @@ Sustav automatski:
 
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
-![logout](/logout.png)
+![logout](./images/logout.png)
+
 
