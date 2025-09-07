@@ -2,11 +2,11 @@
 
 ## 1. Sažetak
 
-Ovaj rad predstavlja projektnu dokumentaciju za web aplikaciju "Image Quiz" razvijenu u Vue.js tehnologiji. Aplikacija predstavlja edukativnu platformu koja kombinira umjetnu inteligenciju i gamifikaciju u svrhu učenja vokabulara. Sustav omogućava korisnicima pogađanje riječi na temelju AI-generiranih slika, praćenje napretka kroz bodovni sustav te natjecanje s drugim korisnicima. Implementacija uključuje Firebase autentifikaciju, Firestore bazu podataka te integraciju s DeepAI API servisom. Aplikacija razlikuje tri razine korisničkih privilegija: gost, registrirani korisnik i administrator, pri čemu svaka razina ima definirane funkcionalnosti.
+Ovaj rad predstavlja projektnu dokumentaciju za web aplikaciju "Image Quiz" razvijenu u Vue.js tehnologiji. Aplikacija predstavlja edukativnu platformu koja kombinira umjetnu inteligenciju i gamifikaciju u svrhu učenja engleskih riječi. Sustav omogućava korisnicima pogađanje riječi na temelju AI-generiranih slika, praćenje napretka kroz bodovni sustav te natjecanje s drugim korisnicima. Implementacija uključuje Firebase autentifikaciju, Firestore bazu podataka te integraciju s DeepAI API servisom. Aplikacija razlikuje tri razine korisničkih privilegija: gost, registrirani korisnik i administrator, pri čemu svaka razina ima definirane funkcionalnosti.
 
 ## 2. Uvod
 
-Tradicionalne metode učenja vokabulara često se oslanjaju na mehaničko memoriranje koje ne potiče dugoročno zadržavanje znanja. Istraživanja pokazuju da vizualno učenje značajno poboljšava retenciju informacija, posebno kada je kombinirano s interaktivnim elementima.
+Tradicionalne metode učenja riječi često se oslanjaju na mehaničko memoriranje koje ne potiče dugoročno zadržavanje znanja. Istraživanja pokazuju da vizualno učenje značajno poboljšava retenciju informacija, posebno kada je kombinirano s interaktivnim elementima.
 
 Image Quiz aplikacija razvija se kao odgovor na potrebu za modernijim pristupom učenju. Ciljano tržište obuhvaća obrazovne institucije, samostalne učenike te sve koji žele poboljšati svoj vokabular kroz interaktivnu metodu. Aplikacija se oslanja na moderne web tehnologije što omogućava pristup s bilo kojeg uređaja s internetskom vezom, bez potrebe za instalacijom.
 
@@ -16,14 +16,14 @@ Glavne prednosti ovog rješenja uključuju automatsko generiranje vizualnog sadr
 
 ### 3.1 Analiza tržišta
 
-Trenutno tržište edukativnih aplikacija dominiraju platforme poput Duolingo, Memrise i Quizlet. Međutim, analiza postojećih rješenja pokazuje nedostatak aplikacija koje kombiniraju AI-generirane vizualne elemente s učenjem vokabulara na hrvatskom jeziku.
+Trenutno tržište edukativnih aplikacija dominiraju platforme poput Duolingo, Memrise i Quizlet. Međutim, analiza postojećih rješenja pokazuje nedostatak aplikacija koje kombiniraju AI-generirane vizualne elemente s učenjem riječi.
 
-Duolingo koristi gamifikaciju ali se fokusira na učenje stranih jezika. Quizlet omogućava stvaranje flashcard setova ali zahtijeva ručno dodavanje slika. Memrise kombinira vizualne elemente ali ne koristi AI tehnologiju za dinamičko generiranje sadržaja.
+Quizlet omogućava stvaranje flashcard setova ali zahtijeva ručno dodavanje slika. Memrise kombinira vizualne elemente ali ne koristi AI tehnologiju za dinamičko generiranje sadržaja.
 
 ### 3.2 SWOT analiza
 
 **Snage:**
-- Jedinstvena kombinacija AI tehnologije i obrazovnog sadržaja
+- Kombinacija AI tehnologije i obrazovnog sadržaja
 - Automatsko generiranje slika eliminira potrebu za ručnim radom
 - Firebase infrastruktura omogućava skalabilnost bez velikih početnih investicija
 - Jednostavno korisničko sučelje prilagođeno svim dobnim skupinama
@@ -256,34 +256,79 @@ flowchart TD
 - Označavanje trenutnog korisnika
 - Prikaz dodatnog ranga ako korisnik nije u top 10
 
-### 4.6 Klasni dijagram domene
+### 4.6 Class dijagram
 
 ```mermaid
 classDiagram
-   class User {
-       -uid: string
-       -email: string
-       -score: number
-       +updateScore()
-   }
-   
-   class GameSession {
-       -currentWord: string
-       -imageUrl: string
-       -isLoading: boolean
-       -result: string
-       +checkAnswer()
-       +loadNewImage()
-   }
-   
-   class Word {
-       -id: string
-       -word: string
-       +generate()
-   }
-   
-   User "1" --> "*" GameSession : has
-   GameSession ..> Word : uses
+    class App {
+        <<VueComponent>>
+        +components
+        +setup()
+        +template
+    }
+
+    class Header {
+        <<VueComponent>>
+        +props
+        +template
+    }
+
+    class Footer {
+        <<VueComponent>>
+        +template
+    }
+
+    class Login {
+        <<VueComponent>>
+        +data()
+        +methods: handleLogin()
+        +template
+    }
+
+    class Register {
+        <<VueComponent>>
+        +data()
+        +methods: handleRegister()
+        +template
+    }
+
+    class QuizView {
+        <<VueComponent>>
+        +data()
+        +methods: loadQuestions(), submitAnswer(), nextQuestion()
+        +template
+    }
+
+    class Highscore {
+        <<VueComponent>>
+        +data()
+        +methods: fetchHighscores()
+        +template
+    }
+
+    class AdminPanel {
+        <<VueComponent>>
+        +data()
+        +methods: addQuiz(), deleteUser(), viewStats()
+        +template
+    }
+
+    class DataProvider {
+        <<VueService>>
+        +methods: fetchData(), saveData()
+    }
+
+    %% Odnosi
+    App --> Header
+    App --> Footer
+    App --> Login
+    App --> Register
+    App --> QuizView
+    App --> Highscore
+    App --> AdminPanel
+    QuizView --> DataProvider
+    Highscore --> DataProvider
+    AdminPanel --> DataProvider
 ```
 
 ## 5. Implementacija
