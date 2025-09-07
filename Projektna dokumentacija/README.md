@@ -142,94 +142,81 @@ Aplikacija komunicira s dva vanjska sustava:
 ### 4.4 Ključni korisnički scenarij - Igranje kviza
 
 ```mermaid
+---
+config:
+  layout: elk
+---
 flowchart TD
-    Start([Početak aplikacije]) --> AuthCheck
-    AuthCheck{Autentikacija?} --> |"U tijeku"| LoadingState
-    LoadingState[Loading...] --> AuthCheck
-    
-    AuthCheck --> |"Nije prijavljen"| ModeCheck
-    ModeCheck{Mode?} --> |"Login"| LoginScreen
-    ModeCheck --> |"Register"| RegisterScreen
-    
-    LoginScreen[Login forma] --> EnterLoginData
-    EnterLoginData[Unos podataka] --> AttemptLogin
-    AttemptLogin{Ispravno?} --> |"Da"| SetUser
-    AttemptLogin --> |"Ne"| LoginError
-    LoginError[Greška] --> EnterLoginData
-    
-    LoginScreen --> ToggleToRegister
-    ToggleToRegister[Prebaci na Register] --> RegisterScreen
-    
-    RegisterScreen[Register forma] --> EnterRegisterData
-    EnterRegisterData[Unos podataka] --> AttemptRegister
-    AttemptRegister{Ispravno?} --> |"Da"| SetUser
-    AttemptRegister --> |"Ne"| RegisterError
-    RegisterError[Greška] --> EnterRegisterData
-    
-    RegisterScreen --> ToggleToLogin
-    ToggleToLogin[Prebaci na Login] --> LoginScreen
-    
-    AuthCheck --> |"Prijavljen"| LoadData
-    SetUser[Postavi korisnika] --> LoadData
-    
-    LoadData[Učitavanje podataka] --> DataProvider
-    DataProvider[DataProvider] --> LoadWords
-    DataProvider --> SetupImageFetcher
-    
-    LoadWords[Dohvat riječi] --> DataCheck
-    SetupImageFetcher[Priprema image fetchera] --> DataCheck
-    
-    DataCheck{Podaci spremni?} --> |"Da"| ShowQuiz
-    DataCheck --> |"Ne"| WaitForData
-    WaitForData[Čekanje] --> DataCheck
-    
-    ShowQuiz[Prikaz kviza] --> QuizFlow
-    
-    LoadData --> ShowUser
-    ShowUser[Prikaz korisnika] --> LogoutButton
-    LogoutButton[Gumb za odjavu] --> Logout
-    Logout[Odjava] --> AuthCheck
-    
-    ShowUser --> AdminCheck
-    AdminCheck{Admin?} --> |"Da"| AdminPanel
-    AdminCheck --> |"Ne"| SkipAdmin
-    
-    AdminPanel[Admin panel] --> AddWords
-    AddWords[Dodavanje riječi] --> ProcessWords
-    ProcessWords[Obrada riječi] --> UpdateDB
-    UpdateDB[Ažuriranje baze] --> SuccessMessage
-    
-    LoadData --> HighscoreComponent
-    HighscoreComponent[Highscore] --> ViewScores
-    ViewScores[Pregled rezultata] --> LoadScores
-    LoadScores[Učitavanje rezultata] --> DisplayScores
-    
-    QuizFlow[Quiz proces] --> LoadUserScore
-    LoadUserScore[Učitavanje bodova] --> NewImage
-    NewImage[Nova slika] --> GenerateImage
-    GenerateImage[Generiranje slike] --> DisplayImage
-    DisplayImage[Prikaz slike] --> UserInput
-    UserInput[Unos odgovora] --> CheckAnswer
-    CheckAnswer{Točno?} --> |"Da"| CorrectAnswer
-    CheckAnswer --> |"Ne"| WrongAnswer
-    CorrectAnswer[Točan odgovor] --> AddPoint
-    AddPoint[Dodaj bod] --> NextImage
-    WrongAnswer[Netočan odgovor] --> NextImage
-    NextImage[Sljedeća slika] --> NewImage
-    
+    Start(["Početak aplikacije"]) --> AuthCheck{"Autentikacija?"}
+    AuthCheck -- U tijeku --> LoadingState["Loading..."]
+    LoadingState --> AuthCheck
+    AuthCheck -- Nije prijavljen --> ModeCheck{"Mode?"}
+    ModeCheck -- Login --> LoginScreen["Login forma"]
+    ModeCheck -- Register --> RegisterScreen["Register forma"]
+    LoginScreen --> EnterLoginData["Unos podataka"] & ToggleToRegister["Prebaci na Register"]
+    EnterLoginData --> AttemptLogin{"Ispravno?"}
+    AttemptLogin -- Da --> SetUser["Postavi korisnika"]
+    AttemptLogin -- Ne --> LoginError["Greška"]
+    LoginError --> EnterLoginData
+    ToggleToRegister --> RegisterScreen
+    RegisterScreen --> EnterRegisterData["Unos podataka"] & ToggleToLogin["Prebaci na Login"]
+    EnterRegisterData --> AttemptRegister{"Ispravno?"}
+    AttemptRegister -- Da --> SetUser
+    AttemptRegister -- Ne --> RegisterError["Greška"]
+    RegisterError --> EnterRegisterData
+    ToggleToLogin --> LoginScreen
+    AuthCheck -- Prijavljen --> LoadData["Učitavanje podataka"]
+    SetUser --> LoadData
+    LoadData --> DataProvider["DataProvider"] & ShowUser["Prikaz korisnika"] & HighscoreComponent["Highscore"]
+    DataProvider --> LoadWords["Dohvat riječi"] & SetupImageFetcher["Priprema image fetchera"]
+    LoadWords --> DataCheck{"Podaci spremni?"}
+    SetupImageFetcher --> DataCheck
+    DataCheck -- Da --> ShowQuiz["Prikaz kviza"]
+    DataCheck -- Ne --> WaitForData["Čekanje"]
+    WaitForData --> DataCheck
+    ShowQuiz --> QuizFlow["Quiz proces"]
+    ShowUser --> LogoutButton["Gumb za odjavu"] & AdminCheck{"Admin?"}
+    LogoutButton --> Logout["Odjava"]
+    Logout --> AuthCheck
+    AdminCheck -- Da --> AdminPanel["Admin panel"]
+    AdminCheck -- Ne --> SkipAdmin["SkipAdmin"]
+    AdminPanel --> AddWords["Dodavanje riječi"]
+    AddWords --> ProcessWords["Obrada riječi"]
+    ProcessWords --> UpdateDB["Ažuriranje baze"]
+    UpdateDB --> SuccessMessage["SuccessMessage"]
+    HighscoreComponent --> ViewScores["Pregled rezultata"]
+    ViewScores --> LoadScores["Učitavanje rezultata"]
+    LoadScores --> DisplayScores["DisplayScores"]
+    QuizFlow --> LoadUserScore["Učitavanje bodova"]
+    LoadUserScore --> NewImage["Nova slika"]
+    NewImage --> GenerateImage["Generiranje slike"]
+    GenerateImage --> DisplayImage["Prikaz slike"]
+    DisplayImage --> UserInput["Unos odgovora"]
+    UserInput --> CheckAnswer{"Točno?"}
+    CheckAnswer -- Da --> CorrectAnswer["Točan odgovor"]
+    CheckAnswer -- Ne --> WrongAnswer["Netočan odgovor"]
+    CorrectAnswer --> AddPoint["Dodaj bod"]
+    AddPoint --> NextImage["Sljedeća slika"]
+    WrongAnswer --> NextImage
+    NextImage --> NewImage
+     Start:::green
+     LoginScreen:::blue
+     RegisterScreen:::blue
+     LoginError:::red
+     RegisterError:::red
+     HighscoreComponent:::purple
+     ShowQuiz:::yellow
+     Logout:::red
+     AdminPanel:::purple
+     NewImage:::orange
+     DisplayImage:::yellow
+     CheckAnswer:::orange
     classDef green fill:#9f6,stroke:#333,stroke-width:2px,color:#000
     classDef red fill:#f66,stroke:#333,stroke-width:2px,color:#000
     classDef blue fill:#69f,stroke:#333,stroke-width:2px,color:#000
     classDef orange fill:#f96,stroke:#333,stroke-width:2px,color:#000
     classDef yellow fill:#ff6,stroke:#333,stroke-width:2px,color:#000
     classDef purple fill:#c9f,stroke:#333,stroke-width:2px,color:#000
-
-    class Start green
-    class LoginScreen,RegisterScreen blue
-    class ShowQuiz,DisplayImage yellow
-    class NewImage,CheckAnswer orange
-    class Logout,LoginError,RegisterError red
-    class AdminPanel,HighscoreComponent purple
 ```
 
 ### 4.5 Prototip sučelja
@@ -492,4 +479,5 @@ Sustav automatski:
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
 ![logout](./images/logout.png)
+
 
