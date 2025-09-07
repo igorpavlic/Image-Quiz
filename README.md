@@ -1,147 +1,147 @@
 # 🧠 Image Quiz
 
-An interactive web-based quiz game that challenges players to identify AI-generated images. Built with Vue.js 3 and powered by Firebase for authentication and data storage.
+Interaktivna web kviz igra koja izaziva igrače da prepoznaju AI-generirane slike. Izgrađena s Vue.js 3 i podržana Firebase-om za autentifikaciju i pohranu podataka.
 
 ![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat&logo=vue.js&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-9.x-FFCA28?style=flat&logo=firebase&logoColor=black)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
-## 🎮 How It Works
+## 🎮 Kako funkcionira
 
-Players are presented with AI-generated images and must guess what object or concept the image represents. The game uses DeepAI's text-to-image API to generate unique images based on a curated word list stored in Firebase.
+Igračima se prikazuju AI-generirane slike i moraju pogoditi koji objekt ili koncept slika predstavlja. Igra koristi DeepAI text-to-image API za generiranje jedinstvenih slika na temelju pažljivo odabrane liste riječi pohranjene u Firebase-u.
 
-## ✨ Features
+## ✨ Značajke
 
-- 🔐 **User Authentication** - Secure login/register system via Firebase Auth
-- 🎨 **AI Image Generation** - Dynamic image creation using DeepAI API
-- 🏆 **Highscore System** - Global leaderboard with player rankings
-- ⚡ **Real-time Scoring** - Instant feedback and score updates
-- 👨‍💼 **Admin Panel** - Easy word management for administrators
-- 📱 **Responsive Design** - Works seamlessly on desktop and mobile
-- 🎯 **Interactive UI** - Clean, intuitive interface with loading animations
+- 🔐 **Autentifikacija korisnika** - Siguran sustav prijave/registracije putem Firebase Auth
+- 🎨 **AI generiranje slika** - Dinamičko stvaranje slika koristeći DeepAI API
+- 🏆 **Sustav najboljeg rezultata** - Globalna ljestvica s rangiranjem igrača
+- ⚡ **Bodovanje u stvarnom vremenu** - Trenutna povratna informacija i ažuriranje bodova
+- 👨‍💼 **Administratorski panel** - Jednostavno upravljanje riječima za administratore
+- 📱 **Responzivan dizajn** - Besprijekorno radi na desktop i mobilnim uređajima
+- 🎯 **Interaktivno sučelje** - Čisto, intuitivno sučelje s animacijama učitavanja
 
-## 🚀 Live Demo
+## 🚀 Demo uživo
 
-[Play the game here!](#) <!-- Add your deployment URL -->
+[Igrajte igru ovdje!](#) <!-- Dodajte svoj URL za deployment -->
 
-## 🛠️ Tech Stack
+## 🛠️ Tehnološki stack
 
 - **Frontend**: Vue.js 3 (Composition API)
-- **Backend**: Firebase (Firestore Database, Authentication)
-- **AI Service**: DeepAI Text-to-Image API
-- **Styling**: Custom CSS with responsive design
-- **Build Tool**: Vite
+- **Backend**: Firebase (Firestore baza podataka, Autentifikacija)
+- **AI servis**: DeepAI Text-to-Image API
+- **Stiliziranje**: Prilagođeni CSS s responzivnim dizajnom
+- **Alat za izgradnju**: Vite
 
-## 📦 Installation
+## 📦 Instalacija
 
-### Prerequisites
+### Preduvjeti
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Firebase project
-- DeepAI API key
+- Node.js (v16 ili viši)
+- npm ili yarn
+- Firebase projekt
+- DeepAI API ključ
 
-### Setup
+### Postavljanje
 
-1. **Clone the repository**
+1. **Klonirajte repozitorij**
    ```bash
    git clone https://github.com/igorpavlic/image-quiz.git
    cd image-quiz
    ```
 
-2. **Install dependencies**
+2. **Instalirajte ovisnosti**
    ```bash
    npm install
    ```
 
-3. **Configure environment variables**
+3. **Konfigurirajte varijable okruženja**
    
-   Create a `.env` file in the root directory:
+   Stvorite `.env` datoteku u root direktoriju:
    ```env
-   # Firebase Configuration
-   VITE_FIREBASE_API_KEY=your_firebase_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
+   # Firebase konfiguracija
+   VITE_FIREBASE_API_KEY=vaš_firebase_api_ključ
+   VITE_FIREBASE_AUTH_DOMAIN=vaš_projekt.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=vaš_projekt_id
+   VITE_FIREBASE_STORAGE_BUCKET=vaš_projekt.appspot.com
+   VITE_FIREBASE_MESSAGING_SENDER_ID=vaš_sender_id
+   VITE_FIREBASE_APP_ID=vaš_app_id
 
    # DeepAI API
-   VITE_DEEPAI_API_KEY=your_deepai_api_key
+   VITE_DEEPAI_API_KEY=vaš_deepai_api_ključ
    ```
 
-4. **Firebase Setup**
-   - Create collections in Firestore:
-     - `words` - for storing quiz words
-     - `users` - for user profiles and scores
+4. **Firebase postavljanje**
+   - Stvorite kolekcije u Firestore-u:
+     - `words` - za pohranu riječi kviza
+     - `users` - za korisničke profile i bodove
    
-   Sample word document structure:
+   Primjer strukture dokumenta riječi:
    ```json
    {
-     "word": "example_word"
+     "word": "primjer_riječi"
    }
    ```
 
-5. **Start development server**
+5. **Pokrenite razvojni server**
    ```bash
    npm run dev
    ```
 
-## 🎯 Usage
+## 🎯 Korištenje
 
-### For Players
-1. **Register/Login** with email and password
-2. **Start Playing** - Images will be generated automatically
-3. **Type Your Answer** and press Enter or click Check
-4. **Track Your Score** - Points are saved in real-time
-5. **View Leaderboard** - See how you rank against other players
+### Za igrače
+1. **Registrirajte se/Prijavite se** s emailom i lozinkom
+2. **Počnite igrati** - Slike će se automatski generirati
+3. **Upišite vaš odgovor** i pritisnite Enter ili kliknite Provjeri
+4. **Pratite svoj rezultat** - Bodovi se spremaju u stvarnom vremenu
+5. **Pogledajte ljestvicu** - Vidite kako se rangirate protiv drugih igrača
 
-### For Administrators
-- Admin access is granted to the configured owner email
-- Use the **Admin Panel** to add new words to the quiz database
-- Words can be added in bulk, separated by commas or spaces
+### Za administratore
+- Administratorski pristup dodjeljuje se konfiguriranom email vlasnika
+- Koristite **Administratorski panel** za dodavanje novih riječi u bazu kviza
+- Riječi se mogu dodavati u skupinama, odvojene zarezima ili razmakom
 
-## 📁 Project Structure
+## 📁 Struktura projekta
 
 ```
 src/
 ├── components/
-│   ├── AdminPanel.vue      # Admin word management
-│   ├── DataProvider.vue    # Data fetching and API calls
-│   ├── Footer.vue          # App footer
-│   ├── Header.vue          # App header
-│   ├── Highscore.vue       # Leaderboard display
-│   ├── Login.vue           # User login form
-│   ├── QuizView.vue        # Main game interface
-│   └── Register.vue        # User registration form
+│   ├── AdminPanel.vue      # Upravljanje riječima admin
+│   ├── DataProvider.vue    # Dohvaćanje podataka i API pozivi
+│   ├── Footer.vue          # Podnožje aplikacije
+│   ├── Header.vue          # Zaglavlje aplikacije
+│   ├── Highscore.vue       # Prikaz ljestvice
+│   ├── Login.vue           # Forma za prijavu korisnika
+│   ├── QuizView.vue        # Glavno sučelje igre
+│   └── Register.vue        # Forma za registraciju korisnika
 ├── assets/
-│   └── main.css           # Global styles
-├── firebase.js            # Firebase configuration
-├── App.vue               # Root component
-└── main.js              # App entry point
+│   └── main.css           # Globalni stilovi
+├── firebase.js            # Firebase konfiguracija
+├── App.vue               # Root komponenta
+└── main.js              # Ulazna točka aplikacije
 ```
 
-## 🔧 Configuration
+## 🔧 Konfiguracija
 
-### Admin Access
-Set the owner email in `App.vue`:
+### Administratorski pristup
+Postavite email vlasnika u `App.vue`:
 ```javascript
 const ownerEmail = 'admin@mail.com'
 ```
 
-### Firestore Security Rules
+### Firestore sigurnosna pravila
 ```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
-      allow read: if request.auth != null; // For leaderboard
+      allow read: if request.auth != null; // Za ljestvicu
     }
     match /words/{wordId} {
       allow read: if request.auth != null;
       allow write: if request.auth != null && 
-        request.auth.token.email == 'your-admin-email@domain.com';
+        request.auth.token.email == 'vaš-admin-email@domena.com';
     }
   }
 }
@@ -149,38 +149,40 @@ service cloud.firestore {
 
 ## 🚀 Deployment
 
-### Build for development
+### Izgradnja za razvoj
 ```bash
 npm run dev
 ```
 
-### Build for production
+### Izgradnja za produkciju
 ```bash
 npm run build
 ```
 
-## 📝 License
+## 📝 Licenca
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Ovaj projekt je licenciran pod MIT licencom - pogledajte [LICENSE](LICENSE) datoteku za detalje.
 
-## 👨‍💻 Author
+## 👨‍💻 Autor
 
 **Igor Pavlić**
 - GitHub: [@igorpavlic](https://github.com/igorpavlic)
 - Email: ipavlic@hotmail
 
-## 🎓 Academic Information
+## 🎓 Akademske informacije
 
-This project was developed as part of coursework at:
+Ovaj projekt je razvijen kao dio kolegija na:
 
-**[Faculty of Informatics in Pula](https://fipu.unipu.hr/)**
-- Course: **[Software Engineering](https://ntankovic.unipu.hr/pi)**
+![FIPU logo](https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png)
+
+**[Fakultet informatike u Puli](https://fipu.unipu.hr/)**
+- Kolegij: **[Programsko inženjerstvo](https://ntankovic.unipu.hr/pi)**
 - Mentor: **[doc. dr. sc. Nikola Tanković](https://ntankovic.unipu.hr)**
 
-## 🙏 Acknowledgments
+## 🙏 Zahvale
 
-- [DeepAI](https://deepai.org/) for the image generation API
-- [Firebase](https://firebase.google.com/) for backend services
-- [Vue.js](https://vuejs.org/) for the reactive framework
-- [VS Code](https://code.visualstudio.com/) for coding
-- [Claude AI](https://claude.ai/) for everything :)
+- [DeepAI](https://deepai.org/) za API za generiranje slika
+- [Firebase](https://firebase.google.com/) za backend servise
+- [Vue.js](https://vuejs.org/) za reaktivni framework
+- [VS Code](https://code.visualstudio.com/) za kodiranje
+- [Claude AI](https://claude.ai/) za sve :)
