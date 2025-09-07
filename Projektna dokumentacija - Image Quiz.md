@@ -122,7 +122,6 @@ flowchart TD
     classDef gost fill:#f9f,stroke:#333,stroke-width:2px,color:#000
     classDef igrac fill:#99f,stroke:#333,stroke-width:2px,color:#000
     classDef admin fill:#9f9,stroke:#333,stroke-width:2px,color:#000
-    classDef usecase fill:#fff,stroke:#333,stroke-width:1px,color:#000
     classDef external fill:#ff9,stroke:#333,stroke-width:2px,color:#000
 ```
 
@@ -218,13 +217,13 @@ flowchart TD
     WrongAnswer[Netočan odgovor] --> NextImage
     NextImage[Sljedeća slika] --> NewImage
     
-    classDef green fill:#9f6,stroke:#333,stroke-width:2px;
-    classDef red fill:#f66,stroke:#333,stroke-width:2px;
-    classDef blue fill:#69f,stroke:#333,stroke-width:2px;
-    classDef orange fill:#f96,stroke:#333,stroke-width:2px;
-    classDef yellow fill:#ff6,stroke:#333,stroke-width:2px;
-    classDef purple fill:#c9f,stroke:#333,stroke-width:2px;
-    
+    classDef green fill:#9f6,stroke:#333,stroke-width:2px,color:#000
+    classDef red fill:#f66,stroke:#333,stroke-width:2px,color:#000
+    classDef blue fill:#69f,stroke:#333,stroke-width:2px,color:#000
+    classDef orange fill:#f96,stroke:#333,stroke-width:2px,color:#000
+    classDef yellow fill:#ff6,stroke:#333,stroke-width:2px,color:#000
+    classDef purple fill:#c9f,stroke:#333,stroke-width:2px,color:#000
+
     class Start green
     class LoginScreen,RegisterScreen blue
     class ShowQuiz,DisplayImage yellow
@@ -293,24 +292,17 @@ classDiagram
 
 Aplikacija koristi komponentnu arhitekturu Vue.js frameworka s jasno definiranom hijerarhijom:
 
-```mermaid
-flowchart TD
-    App[App.vue<br/>root komponenta]
-    App --> Header[Header.vue<br/>naslov aplikacije]
-    App --> Login[Login.vue<br/>prijava korisnika]
-    App --> Register[Register.vue<br/>registracija]
-    App --> DataProvider[DataProvider.vue<br/>podatkovni sloj]
-    App --> QuizView[QuizView.vue<br/>glavna logika igre]
-    App --> AdminPanel[AdminPanel.vue<br/>admin funkcionalnosti]
-    App --> Highscore[Highscore.vue<br/>prikaz rezultata]
-    App --> Footer[Footer.vue<br/>copyright informacije]
-    
-    style App fill:#4CAF50,stroke:#333,stroke-width:3px,color:#fff
-    style Login fill:#2196F3,stroke:#333,stroke-width:2px,color:#fff
-    style Register fill:#2196F3,stroke:#333,stroke-width:2px,color:#fff
-    style DataProvider fill:#FF9800,stroke:#333,stroke-width:2px,color:#fff
-    style QuizView fill:#9C27B0,stroke:#333,stroke-width:2px,color:#fff
-    style AdminPanel fill:#F44336,stroke:#333,stroke-width:2px,color:#fff
+```
+App.vue (root komponenta)
+├── Header.vue (naslov aplikacije)
+├── Auth komponente
+│   ├── Login.vue (prijava korisnika)
+│   └── Register.vue (registracija)
+├── DataProvider.vue (podatkovni sloj)
+├── QuizView.vue (glavna logika igre)
+├── AdminPanel.vue (admin funkcionalnosti)
+├── Highscore.vue (prikaz rezultata)
+└── Footer.vue (copyright informacije)
 ```
 
 ### 5.2 Ključna funkcionalnost - Generiranje i provjera kviza
@@ -456,3 +448,4 @@ Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vrat
 
 
 *Napomena: Aplikacija zahtijeva stalnu internetsku vezu za rad. Svi podaci se pohranjuju u oblaku i sinkroniziraju u stvarnom vremenu.*
+
