@@ -443,9 +443,3 @@ Sustav automatski:
 ### 6.6 Odjava iz sustava
 
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
-
----
-
-
-*Napomena: Aplikacija zahtijeva stalnu internetsku vezu za rad. Svi podaci se pohranjuju u oblaku i sinkroniziraju u stvarnom vremenu.*
-
