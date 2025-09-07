@@ -1,7 +1,7 @@
 ### Sveučilište Jurja Dobrile u Puli
 
 ### Prijediplomski sveučilišni studij Informatika
-
+**[Fakultet informatike u Puli](https://fipu.unipu.hr/)**
 - Kolegij: **[Programsko inženjerstvo](https://ntankovic.unipu.hr/pi)**
 - Mentor: **[doc. dr. sc. Nikola Tanković](https://ntankovic.unipu.hr)**
 
@@ -492,6 +492,7 @@ Sustav automatski:
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
 ![logout](./images/logout.png)
+
 
 
 
