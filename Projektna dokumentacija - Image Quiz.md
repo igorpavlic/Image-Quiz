@@ -143,31 +143,94 @@ Aplikacija komunicira s dva vanjska sustava:
 ### 4.4 Ključni korisnički scenarij - Igranje kviza
 
 ```mermaid
-classDiagram
-   class User {
-       -uid: string
-       -email: string
-       -score: number
-       +updateScore()
-   }
-   
-   class GameSession {
-       -currentWord: string
-       -imageUrl: string
-       -isLoading: boolean
-       -result: string
-       +checkAnswer()
-       +loadNewImage()
-   }
-   
-   class Word {
-       -id: string
-       -word: string
-       +generate()
-   }
-   
-   User "1" --> "*" GameSession : has
-   GameSession ..> Word : uses
+flowchart TD
+    Start([Početak aplikacije]) --> AuthCheck
+    AuthCheck{Autentikacija?} --> |"U tijeku"| LoadingState
+    LoadingState[Loading...] --> AuthCheck
+    
+    AuthCheck --> |"Nije prijavljen"| ModeCheck
+    ModeCheck{Mode?} --> |"Login"| LoginScreen
+    ModeCheck --> |"Register"| RegisterScreen
+    
+    LoginScreen[Login forma] --> EnterLoginData
+    EnterLoginData[Unos podataka] --> AttemptLogin
+    AttemptLogin{Ispravno?} --> |"Da"| SetUser
+    AttemptLogin --> |"Ne"| LoginError
+    LoginError[Greška] --> EnterLoginData
+    
+    LoginScreen --> ToggleToRegister
+    ToggleToRegister[Prebaci na Register] --> RegisterScreen
+    
+    RegisterScreen[Register forma] --> EnterRegisterData
+    EnterRegisterData[Unos podataka] --> AttemptRegister
+    AttemptRegister{Ispravno?} --> |"Da"| SetUser
+    AttemptRegister --> |"Ne"| RegisterError
+    RegisterError[Greška] --> EnterRegisterData
+    
+    RegisterScreen --> ToggleToLogin
+    ToggleToLogin[Prebaci na Login] --> LoginScreen
+    
+    AuthCheck --> |"Prijavljen"| LoadData
+    SetUser[Postavi korisnika] --> LoadData
+    
+    LoadData[Učitavanje podataka] --> DataProvider
+    DataProvider[DataProvider] --> LoadWords
+    DataProvider --> SetupImageFetcher
+    
+    LoadWords[Dohvat riječi] --> DataCheck
+    SetupImageFetcher[Priprema image fetchera] --> DataCheck
+    
+    DataCheck{Podaci spremni?} --> |"Da"| ShowQuiz
+    DataCheck --> |"Ne"| WaitForData
+    WaitForData[Čekanje] --> DataCheck
+    
+    ShowQuiz[Prikaz kviza] --> QuizFlow
+    
+    LoadData --> ShowUser
+    ShowUser[Prikaz korisnika] --> LogoutButton
+    LogoutButton[Gumb za odjavu] --> Logout
+    Logout[Odjava] --> AuthCheck
+    
+    ShowUser --> AdminCheck
+    AdminCheck{Admin?} --> |"Da"| AdminPanel
+    AdminCheck --> |"Ne"| SkipAdmin
+    
+    AdminPanel[Admin panel] --> AddWords
+    AddWords[Dodavanje riječi] --> ProcessWords
+    ProcessWords[Obrada riječi] --> UpdateDB
+    UpdateDB[Ažuriranje baze] --> SuccessMessage
+    
+    LoadData --> HighscoreComponent
+    HighscoreComponent[Highscore] --> ViewScores
+    ViewScores[Pregled rezultata] --> LoadScores
+    LoadScores[Učitavanje rezultata] --> DisplayScores
+    
+    QuizFlow[Quiz proces] --> LoadUserScore
+    LoadUserScore[Učitavanje bodova] --> NewImage
+    NewImage[Nova slika] --> GenerateImage
+    GenerateImage[Generiranje slike] --> DisplayImage
+    DisplayImage[Prikaz slike] --> UserInput
+    UserInput[Unos odgovora] --> CheckAnswer
+    CheckAnswer{Točno?} --> |"Da"| CorrectAnswer
+    CheckAnswer --> |"Ne"| WrongAnswer
+    CorrectAnswer[Točan odgovor] --> AddPoint
+    AddPoint[Dodaj bod] --> NextImage
+    WrongAnswer[Netočan odgovor] --> NextImage
+    NextImage[Sljedeća slika] --> NewImage
+    
+    classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef red fill:#f66,stroke:#333,stroke-width:2px;
+    classDef blue fill:#69f,stroke:#333,stroke-width:2px;
+    classDef orange fill:#f96,stroke:#333,stroke-width:2px;
+    classDef yellow fill:#ff6,stroke:#333,stroke-width:2px;
+    classDef purple fill:#c9f,stroke:#333,stroke-width:2px;
+    
+    class Start green
+    class LoginScreen,RegisterScreen blue
+    class ShowQuiz,DisplayImage yellow
+    class NewImage,CheckAnswer orange
+    class Logout,LoginError,RegisterError red
+    class AdminPanel,HighscoreComponent purple
 ```
 
 ### 4.5 Prototip sučelja
@@ -230,7 +293,7 @@ classDiagram
 
 Aplikacija koristi komponentnu arhitekturu Vue.js frameworka s jasno definiranom hijerarhijom:
 
-```
+```mermaid
 flowchart TD
     App[App.vue<br/>root komponenta]
     App --> Header[Header.vue<br/>naslov aplikacije]
@@ -390,5 +453,6 @@ Sustav automatski:
 Za odjavu jednostavno kliknite gumb "Log Out" na dnu ekrana. Sustav će vas vratiti na ekran za prijavu.
 
 ---
+
 
 *Napomena: Aplikacija zahtijeva stalnu internetsku vezu za rad. Svi podaci se pohranjuju u oblaku i sinkroniziraju u stvarnom vremenu.*
