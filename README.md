@@ -171,10 +171,6 @@ Ovaj projekt je licenciran pod MIT licencom - pogledajte [LICENSE](LICENSE) dato
 
 ## 🎓 Akademske informacije
 
-Ovaj projekt je razvijen kao dio kolegija na:
-
-![FIPU logo](https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png)
-
 **[Fakultet informatike u Puli](https://fipu.unipu.hr/)**
 - Kolegij: **[Programsko inženjerstvo](https://ntankovic.unipu.hr/pi)**
 - Mentor: **[doc. dr. sc. Nikola Tanković](https://ntankovic.unipu.hr)**
