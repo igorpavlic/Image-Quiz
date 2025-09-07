@@ -149,11 +149,6 @@ service cloud.firestore {
 
 ## 🚀 Deployment
 
-### Izgradnja za razvoj
-```bash
-npm run dev
-```
-
 ### Izgradnja za produkciju
 ```bash
 npm run build
